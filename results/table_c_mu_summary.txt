@@ -1,0 +1,7 @@
+r=2: 1/2 partitions with c_mu > 0
+r=3: 1/3 partitions with c_mu > 0
+r=4: 3/5 partitions with c_mu > 0
+r=5: 3/7 partitions with c_mu > 0
+r=6: 7/11 partitions with c_mu > 0
+r=7: 8/15 partitions with c_mu > 0
+r=8: 16/22 partitions with c_mu > 0

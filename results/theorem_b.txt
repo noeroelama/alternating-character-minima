@@ -1,0 +1,7 @@
+(n-2,1,1): formula checked for 4 <= n <= 160: OK
+(n-3,3): formula checked for 6 <= n <= 160: OK
+(n-3,2,1): formula checked for 5 <= n <= 160: OK
+  note: (4,4) at n=8: m=-1, formula gives -5
+  note: (5,4) at n=9: m=-3, formula gives -5
+(n-4,4): formula checked for 10 <= n <= 120: OK
+ALL OK
