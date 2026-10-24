@@ -1,4 +1,4 @@
-"""Table 1: the constant c_mu of Theorem C for 2 <= |mu| <= 8.
+"""Table 1: the constant c_mu of Theorem B for 2 <= |mu| <= 8.
 
 Also records chi^mu on the involution class 1^eps 2^floor(r/2)
 (Corollary 1.2) and the number of mu with c_mu > 0 for each r.

@@ -11,7 +11,7 @@ import time
 ROOT = os.path.dirname(os.path.abspath(__file__))
 SCRIPTS = [
     "01_threshold.py",
-    "02_theorem_b.py",
+    "02_exact_minima.py",
     "03_table_c_mu.py",
     "04_asymptotics.py",
     "05_validate.py",

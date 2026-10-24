@@ -21,10 +21,10 @@ This runs the unit tests and then the scripts below in order. The total running 
 
 | Script | Manuscript | Output |
 |---|---|---|
-| `scripts/01_threshold.py` | Theorem A, Proposition 3.1, Remark 3.2 | `results/threshold.txt` |
-| `scripts/02_theorem_b.py` | Theorem B (exact minima, checked for n ≤ 160, resp. n ≤ 120) | `results/theorem_b.txt` |
+| `scripts/01_threshold.py` | Theorem A, Remark 3.1 | `results/threshold.txt` |
+| `scripts/02_exact_minima.py` | Theorem C (exact minima, checked for n ≤ 160, resp. n ≤ 120) | `results/exact_minima.txt` |
 | `scripts/03_table_c_mu.py` | Table 1 (constants c<sub>μ</sub>, \|μ\| ≤ 8) | `results/table_c_mu.csv`, `results/table_c_mu_summary.txt` |
-| `scripts/04_asymptotics.py` | Table 2 (convergence in Theorem C) | `results/table_ratio.csv` |
+| `scripts/04_asymptotics.py` | Table 2 (convergence in Theorem B) | `results/table_ratio.csv` |
 | `scripts/05_validate.py` | Section 6.1 (cross-check of the two algorithms) | `results/validation.txt` |
 | `scripts/06_open_problems.py` | Section 6.3 (cases with c<sub>μ</sub> = 0) | `results/open_problems.csv` |
 

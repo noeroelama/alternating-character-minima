@@ -1,4 +1,4 @@
-"""Theorem B: exact minima on A_n for (n-2,1,1), (n-3,3), (n-3,2,1), (n-4,4).
+"""Theorem C: exact minima on A_n for (n-2,1,1), (n-3,3), (n-3,2,1), (n-4,4).
 
 For (n-4,4) the minimum is min(-5, f(n)) for n >= 10.
 
@@ -6,7 +6,7 @@ Compares the closed formulas with the exact minimum computed from the
 character polynomial, for every n from the first admissible value up to
 --nmax (default 160; 120 for (n-4,4), which is slower).
 
-Output: results/theorem_b.txt
+Output: results/exact_minima.txt
 """
 
 import argparse
@@ -66,7 +66,7 @@ def main() -> None:
                      + ("OK" if ok else f"FAILED at {failures}"))
         print(lines[-1], flush=True)
     lines.append("ALL OK" if all_ok else "SOME CHECKS FAILED")
-    with open(result_path("theorem_b.txt"), "w") as fh:
+    with open(result_path("exact_minima.txt"), "w") as fh:
         fh.write("\n".join(lines) + "\n")
     print(lines[-1])
 

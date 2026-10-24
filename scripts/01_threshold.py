@@ -1,4 +1,4 @@
-"""Theorem A, Proposition 3.1 and Remark 3.2.
+"""Theorem A and Remark 3.1.
 
 For 5 <= n <= N (default 28) list the irreducible characters of A_n whose
 smallest real value is >= -1, check the expected answer for n >= 9, and run
