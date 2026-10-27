@@ -24,7 +24,8 @@ from typing import List, Optional
 
 from .mn import degree, sn_character
 from .partitions import (Partition, conjugate, diagonal_hooks,
-                         is_even_cycle_type, partitions)
+                         is_even_cycle_type, partitions,
+                         splits_in_alternating_group)
 
 
 @dataclass(frozen=True)
@@ -107,5 +108,44 @@ def number_of_irreducibles(n: int) -> int:
 
 
 def number_of_classes(n: int) -> int:
-    from .partitions import splits_in_alternating_group
     return sum(2 if splits_in_alternating_group(rho) else 1 for rho in even_cycle_types(n))
+
+
+def column_orthogonality_defect(n: int) -> float:
+    """Largest relative defect in the column orthogonality relations of A_n.
+
+    For every conjugacy class C of A_n the relation
+    sum_{chi in Irr(A_n)} |chi(C)|^2 = |C_{A_n}(g)|, g in C, is checked using
+    the values described in the module docstring (including the non-real
+    values of the split characters). The centraliser order is z_rho / 2 if
+    the S_n-class of type rho does not split, and z_rho if it splits.
+    Returns max |lhs - rhs| / rhs over all classes; it should be ~1e-15.
+    """
+    labels = irreducible_labels(n)
+    worst = 0.0
+    for rho in even_cycle_types(n):
+        z = 1
+        for part in set(rho):
+            mult = rho.count(part)
+            z *= part ** mult * math.factorial(mult)
+        splits = splits_in_alternating_group(rho)
+        target = z if splits else z // 2
+        total = 0.0
+        for lam in labels:
+            if lam != conjugate(lam):
+                total += sn_character(lam, rho) ** 2
+                continue
+            h = diagonal_hooks(lam)
+            if tuple(rho) != h:
+                total += 2 * (sn_character(lam, rho) / 2) ** 2
+                continue
+            eps = (-1) ** ((n - len(h)) // 2)
+            prod = math.prod(h)
+            # |(eps +/- sqrt(eps*prod))/2|^2 summed over the pair = (1 + prod)/2
+            if eps > 0:
+                root = math.sqrt(prod)
+                total += ((eps + root) / 2) ** 2 + ((eps - root) / 2) ** 2
+            else:
+                total += 2 * (1 + prod) / 4
+        worst = max(worst, abs(total - target) / target)
+    return worst

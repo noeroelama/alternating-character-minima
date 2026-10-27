@@ -2,7 +2,7 @@
 
 Code and data accompanying the manuscript
 
-> A. Nurwahid, *Minimum values of irreducible characters of the alternating groups* (in preparation).
+> A. Nurwahid, *Minimum values of irreducible characters of alternating groups* (manuscript).
 
 For an irreducible character χ of the alternating group A<sub>n</sub>, let m(χ) be the smallest real value of χ. The scripts in this repository reproduce every table and every computer verification in the manuscript.
 
@@ -17,18 +17,20 @@ For an irreducible character χ of the alternating group A<sub>n</sub>, let m(χ
 python run_all.py
 ```
 
-This runs the unit tests and then the scripts below in order. The total running time is about 3–4 minutes on a laptop. Output files are written to `results/`; the copies committed in this repository were produced with the same command.
+This runs the unit tests and then the scripts below in order. The total running time is about 6 minutes on a laptop, and script 01 needs about 1.5 GB of memory. Output files are written to `results/`; the copies committed in this repository were produced with the same command.
 
 | Script | Manuscript | Output |
 |---|---|---|
-| `scripts/01_threshold.py` | Theorem A, Remark 3.1 | `results/threshold.txt` |
+| `scripts/01_threshold.py` | Theorem A(d), Remark 3.4, Table S1 | `results/threshold.txt` |
 | `scripts/02_exact_minima.py` | Theorem C (exact minima, checked for n ≤ 160, resp. n ≤ 120) | `results/exact_minima.txt` |
-| `scripts/03_table_c_mu.py` | Table 1 (constants c<sub>μ</sub>, \|μ\| ≤ 8) | `results/table_c_mu.csv`, `results/table_c_mu_summary.txt` |
-| `scripts/04_asymptotics.py` | Table 2 (convergence in Theorem B) | `results/table_ratio.csv` |
-| `scripts/05_validate.py` | Section 6.1 (cross-check of the two algorithms) | `results/validation.txt` |
-| `scripts/06_open_problems.py` | Section 6.3 (cases with c<sub>μ</sub> = 0) | `results/open_problems.csv` |
+| `scripts/03_table_c_mu.py` | Section 7 (counts for \|μ\| ≤ 8) and Table S3 (constants c<sub>μ</sub>, \|μ\| ≤ 6) | `results/table_c_mu.csv`, `results/table_c_mu_summary.txt` |
+| `scripts/04_asymptotics.py` | Table S4 (convergence in Theorem B) | `results/table_ratio.csv` |
+| `scripts/05_validate.py` | Supplementary Section S5 (cross-check of the two algorithms) | `results/validation.txt` |
+| `scripts/06_open_problems.py` | Section 7 (cases with c<sub>μ</sub> = 0) | `results/open_problems.csv` |
+| `scripts/07_self_conjugate.py` | Lemma 3.2, Proposition 3.3, Table S2 (split characters) | `results/self_conjugate.txt` |
+| `scripts/08_czero.py` | Proposition 1.2(ii), Remark 7.1, Theorem D (case c<sub>μ</sub> = 0) | `results/czero.txt` |
 
-Each script accepts `--help`; the ranges of n can be changed from the command line.
+All scripts except 03 accept `--help`; the ranges of n can be changed from the command line.
 
 ## Package overview
 

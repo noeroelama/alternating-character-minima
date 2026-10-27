@@ -1,4 +1,4 @@
-"""Table 2: m(chi^{(n-r,mu)}) on A_n and the ratio m / n^(r/2) versus -c_mu.
+"""Table S4: m(chi^{(n-r,mu)}) on A_n and the ratio m / n^(r/2) versus -c_mu.
 
 Output: results/table_ratio.csv
 """
@@ -31,7 +31,7 @@ def main() -> None:
     for n in args.n:
         header += [f"m(n={n})", f"ratio(n={n})", f"argmin(n={n})"]
     with open(result_path("table_ratio.csv"), "w", newline="") as fh:
-        writer = csv.writer(fh)
+        writer = csv.writer(fh, lineterminator="\n")
         writer.writerow(header)
         writer.writerows(rows)
 

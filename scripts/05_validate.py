@@ -1,4 +1,4 @@
-"""Cross-check: character-polynomial minimisation versus complete tables.
+"""Supplementary Section S5, cross-check: character-polynomial minimisation versus complete tables.
 
 For every mu with |mu| <= 4 and every admissible n <= --nmax (default 24),
 the minimum of chi^{(n-r,mu)} over A_n computed from the character
@@ -34,7 +34,7 @@ def main() -> None:
                 if brute != fast:
                     failures.append((label(mu), n, brute, fast))
     msg = f"{checked} (mu, n) pairs checked, {len(failures)} mismatches"
-    with open(result_path("validation.txt"), "w") as fh:
+    with open(result_path("validation.txt"), "w", newline="\n") as fh:
         fh.write(msg + "\n")
         for f in failures:
             fh.write(f"{f}\n")

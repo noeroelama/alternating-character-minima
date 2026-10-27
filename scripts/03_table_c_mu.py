@@ -1,9 +1,10 @@
-"""Table 1: the constant c_mu of Theorem B for 2 <= |mu| <= 8.
+"""Section 7 and Table S3: the constant c_mu of Theorem B for 2 <= |mu| <= 8.
 
 Also records chi^mu on the involution class 1^eps 2^floor(r/2)
-(Corollary 1.2) and the number of mu with c_mu > 0 for each r.
+(Proposition 1.2(i)) and the number of mu with c_mu > 0 for each r
+(Section 7). Table S3 lists the values for |mu| <= 6.
 
-Output: results/table_c_mu.csv
+Output: results/table_c_mu.csv, results/table_c_mu_summary.txt
 """
 
 import csv
@@ -28,10 +29,10 @@ def main() -> None:
             total += 1
         summary.append(f"r={r}: {positive}/{total} partitions with c_mu > 0")
     with open(result_path("table_c_mu.csv"), "w", newline="") as fh:
-        writer = csv.writer(fh)
+        writer = csv.writer(fh, lineterminator="\n")
         writer.writerow(["r", "mu", "c_mu", "chi_mu_on_1^eps_2^floor(r/2)"])
         writer.writerows(rows)
-    with open(result_path("table_c_mu_summary.txt"), "w") as fh:
+    with open(result_path("table_c_mu_summary.txt"), "w", newline="\n") as fh:
         fh.write("\n".join(summary) + "\n")
     print("\n".join(summary))
 

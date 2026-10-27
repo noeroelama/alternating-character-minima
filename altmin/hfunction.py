@@ -37,11 +37,23 @@ def c_mu(mu: Partition, tol: float = 1e-12) -> float:
     """c_mu >= 0, computed from the critical points of H_mu on [0, S].
 
     The leading coefficient is chi^mu(1)/r! > 0, so H_mu is positive for
-    large s; S is a Cauchy-type bound beyond which H_mu is increasing.
+    large s; S is a bound (Fujiwara) beyond which H_mu is increasing.
     """
     coeffs = h_coefficients(mu)
     lead = float(coeffs[0][1])
-    bound = 1.0 + max(abs(float(c)) / lead for _, c in coeffs[1:]) if len(coeffs) > 1 else 1.0
+    # Fujiwara-type bound for the real roots of H_mu': every root s satisfies
+    # |s| <= 2 max_k |a_k / a_deg|^(1/(deg-k)), where a_k are the coefficients
+    # of the derivative (Fujiwara's bound has an extra factor 1/2 for the
+    # constant term; omitting it only enlarges the bound). The search grid
+    # below is relative to this bound, so a needlessly large bound, such as a
+    # Cauchy-type bound when chi^mu(1)/r! is small, makes the grid too coarse.
+    deg = coeffs[0][0]
+    if len(coeffs) > 1 and deg > 1:
+        lead_d = lead * deg
+        bound = 2.0 * max((abs(float(c)) * e / lead_d) ** (1.0 / (deg - e))
+                          for e, c in coeffs[1:] if e > 0) if any(e > 0 for e, _ in coeffs[1:]) else 1.0
+    else:
+        bound = 1.0
     bound = max(bound, 2.0)
     grid = 20000
     candidates = [0.0, bound]
@@ -53,7 +65,9 @@ def c_mu(mu: Partition, tol: float = 1e-12) -> float:
             candidates.append(prev_s)
         elif prev_d * d < 0:
             lo, hi = prev_s, s
-            while hi - lo > tol:
+            for _ in range(200):
+                if hi - lo <= tol * max(1.0, abs(hi)):
+                    break
                 mid = (lo + hi) / 2
                 if _derivative_value(coeffs, lo) * _derivative_value(coeffs, mid) <= 0:
                     hi = mid

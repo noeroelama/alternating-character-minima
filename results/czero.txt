@@ -1,0 +1,16 @@
+r=2: Hermite criterion OK
+r=3: Hermite criterion OK
+r=4: Hermite criterion OK
+r=5: Hermite criterion OK
+r=6: Hermite criterion OK
+r=7: Hermite criterion OK
+r=8: Hermite criterion OK
+r=9: Hermite criterion OK
+r=10: Hermite criterion OK
+r=11: Hermite criterion OK
+r=12: Hermite criterion OK
+(n-4,2,2), n=216: min=-432, element=-387, lower bound -n^(4/3)/4-4n-1=-1189.0 OK
+(n-4,2,2), n=266: min=-552, element=-546, lower bound -n^(4/3)/4-4n-1=-1492.7 OK
+(n-4,2,2), n=316: min=-693, element=-651, lower bound -n^(4/3)/4-4n-1=-1803.1 OK
+Theorem D(b) elements checked for 30 <= n <= 150
+ALL OK

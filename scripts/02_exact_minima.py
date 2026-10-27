@@ -35,9 +35,9 @@ def f_44(n):
 
 
 CASES = [
-    ((1, 1), f_211, 4),
+    ((1, 1), f_211, 6),
     ((3,), f_33, 6),
-    ((2, 1), f_321, 5),
+    ((2, 1), f_321, 7),
     ((4,), f_44, 10),
 ]
 
@@ -66,7 +66,7 @@ def main() -> None:
                      + ("OK" if ok else f"FAILED at {failures}"))
         print(lines[-1], flush=True)
     lines.append("ALL OK" if all_ok else "SOME CHECKS FAILED")
-    with open(result_path("exact_minima.txt"), "w") as fh:
+    with open(result_path("exact_minima.txt"), "w", newline="\n") as fh:
         fh.write("\n".join(lines) + "\n")
     print(lines[-1])
 

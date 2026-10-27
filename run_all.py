@@ -16,6 +16,8 @@ SCRIPTS = [
     "04_asymptotics.py",
     "05_validate.py",
     "06_open_problems.py",
+    "07_self_conjugate.py",
+    "08_czero.py",
 ]
 
 

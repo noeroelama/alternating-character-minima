@@ -1,4 +1,4 @@
-"""Data for Section 6.3: growth of m(chi^{(n-r,mu)}) when c_mu = 0.
+"""Data for Section 7: growth of m(chi^{(n-r,mu)}) when c_mu = 0.
 
 For each mu, report m at two values of n together with the empirical
 exponent log(m(n2)/m(n1)) / log(n2/n1).
@@ -31,7 +31,7 @@ def main() -> None:
         rows.append([label(mu), f"{c_mu(mu):.4f}", m1, label(x1), m2, label(x2), f"{exponent:.3f}"])
         print(rows[-1], flush=True)
     with open(result_path("open_problems.csv"), "w", newline="") as fh:
-        writer = csv.writer(fh)
+        writer = csv.writer(fh, lineterminator="\n")
         writer.writerow(["mu", "c_mu", f"m(n={args.n1})", "argmin X", f"m(n={args.n2})",
                          "argmin X", "empirical exponent"])
         writer.writerows(rows)
